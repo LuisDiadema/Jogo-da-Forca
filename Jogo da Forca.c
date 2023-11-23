@@ -20,7 +20,7 @@ int main () {
     do {
         char chute;
 
-        printf("Chuta uma letra ai");
+        printf("Chuta uma letra ai: ");
         scanf(" %c", &chute);
 
         for(int i = 0;i < strlen (palavrasecreta); i++) {
