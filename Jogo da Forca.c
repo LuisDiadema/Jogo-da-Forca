@@ -1,32 +1,42 @@
 #include <stdio.h>
 #include <string.h>
 
-int main () {
-    char palavrasecreta[20];
+int main() {
 
-    palavrasecreta[1] = 'M';
-    palavrasecreta[2] = 'E';
-    palavrasecreta[2] = 'L';
-    palavrasecreta[4] = 'N';
-    palavrasecreta[5] = 'C';
-    palavrasecreta[6] = 'I';
-    palavrasecreta[7] = 'A';
+	char palavrasecreta[20];
+	sprintf(palavrasecreta, "MELANCIA");
 
-    palavrasecreta[8] = '\0';
+	int acertou = 0;
+	int enforcou = 0;
 
-    int acertou = 0;
-    int enforcou = 0;
+	char chutes[26];
+	int tentativas = 0;
 
-    do {
-        char chute;
+	do {
+		
+		for(int i = 0; i < strlen(palavrasecreta); i++) {
+			int achou = 0;
 
-        printf("Chuta uma letra ai: ");
-        scanf(" %c", &chute);
+			for(int j = 0; j < tentativas; j++) {
+				if(chutes[j] == palavrasecreta[i]) {
+					achou = 1;
+					break;
+				}
+			}
 
-        for(int i = 0;i < strlen (palavrasecreta); i++) {
-            if(palavrasecreta[i] == chute) {
-                printf("A posicao %d tem essa letra\n", i+1);
-            }
-        }            
-    } while (!acertou && !enforcou);
+			if(achou) {
+				printf("%c ", palavrasecreta[i]);
+			} else {
+				printf("_ ");
+			}
+		}
+		printf("\n");
+
+		char chute;
+		printf("Qual letra? ");
+		scanf(" %c", &chute);
+
+		chutes[tentativas] = chute;
+		tentativas++;
+	} while (!acertou && !enforcou);
 }
