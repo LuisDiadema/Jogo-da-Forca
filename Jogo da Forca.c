@@ -1,7 +1,14 @@
 #include <stdio.h>
 #include <string.h>
+void abertura() {printf("   _     _     _       _     _     _     _     _    \n");printf("  / \\   / \\   / \\     / \\   / \\   / \\   / \\   / \\   \n");printf(" ( B ) ( e ) ( m )   ( V ) ( i ) ( n ) ( d ) ( o )  \n");printf("  \\_/   \\_/   \\_/     \\_/   \\_/   \\_/   \\_/   \\_/   \n");printf("J O G O - D A - F O R C A\n\n");
+}
+
 
 int main() {
+
+    abertura(); 
+
+    printf("Escolha uma Letra:\n\n");
 
 	char palavrasecreta[20];
 	sprintf(palavrasecreta, "MELANCIA");
@@ -33,7 +40,7 @@ int main() {
 		printf("\n");
 
 		char chute;
-		printf("Qual letra? ");
+		printf("Qual voce letra voce vai escolher ? ");
 		scanf(" %c", &chute);
 
 		chutes[tentativas] = chute;
