@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
-void abertura() {printf("   _     _     _       _     _     _     _     _    \n");printf("  / \\   / \\   / \\     / \\   / \\   / \\   / \\   / \\   \n");printf(" ( B ) ( e ) ( m )   ( V ) ( i ) ( n ) ( d ) ( o )  \n");printf("  \\_/   \\_/   \\_/     \\_/   \\_/   \\_/   \\_/   \\_/   \n");printf("J O G O - D A - F O R C A\n\n");
-}
 
+void abertura() {printf("   _     _     _       _     _     _     _     _    \n");printf("  / \\   / \\   / \\     / \\   / \\   / \\   / \\   / \\   \n");printf(" ( B ) ( E ) ( M )   ( V ) ( I ) ( N ) ( D ) ( O )  \n");printf("  \\_/   \\_/   \\_/     \\_/   \\_/   \\_/   \\_/   \\_/   \n");printf("J O G O - D A - F O R C A\n\n");
+}
 
 int main() {
 
@@ -40,8 +40,8 @@ int main() {
 		printf("\n");
 
 		char chute;
-		printf("Qual voce letra voce vai escolher ? ");
-		scanf(" %c", &chute);
+		printf("Qual letra voce vai escolher ? ");
+		scanf(" %c", chute);
 
 		chutes[tentativas] = chute;
 		tentativas++;
