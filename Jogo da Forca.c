@@ -3,6 +3,14 @@
 
 void abertura() {printf("   _     _     _       _     _     _     _     _    \n");printf("  / \\   / \\   / \\     / \\   / \\   / \\   / \\   / \\   \n");printf(" ( B ) ( E ) ( M )   ( V ) ( I ) ( N ) ( D ) ( O )  \n");printf("  \\_/   \\_/   \\_/     \\_/   \\_/   \\_/   \\_/   \\_/   \n");printf("J O G O - D A - F O R C A\n\n");
 }
+void chuta(char chutes[], int* tentativas) {
+	char chute;
+	printf("Qual e o seu chute ??\n\n");
+	scanf(" %c", &chute);
+
+	chutes[*tentativas] = chute;
+	(*tentativas)++;
+}
 
 int main() {
 
@@ -39,11 +47,7 @@ int main() {
 		}
 		printf("\n");
 
-		char chute;
-		printf("Qual letra voce vai escolher ? ");
-		scanf(" %c", chute);
-
-		chutes[tentativas] = chute;
-		tentativas++;
+		chuta(chutes, &tentativas);
+		printf("Voce ja chuteu %d vezes vai certar ou nao ??\n\n", tentativas);
 	} while (!acertou && !enforcou);
 }
