@@ -13,18 +13,6 @@ void chuta(char chutes[], int* tentativas) {
 	(*tentativas)++;
 }
 
-void desenhaforca(char* palavrasecreta, char* chutes, int tentativas) {
-	printf("Voce ja deu %d chutes\n", tentativas);
-
-	for(int i = 0; i < strlen(palavrasecreta); i++) {
-		if(jachutou(palavrasecreta[0], chutes, tentativas)) {
-		prinft("%c ", palavrasecreta[i]);
-		} else {
-			printf("_ ");
-		}
-	}
-}
-
 int jachutou(char letra, char* chutes, int tentativas) {
 	int achou = 0;
 
@@ -37,6 +25,19 @@ int jachutou(char letra, char* chutes, int tentativas) {
 
 	return achou;
 }
+
+void desenhaforca(char* palavrasecreta, char* chutes, int tentativas) {
+	printf("Voce ja deu %d chutes\n", tentativas);
+
+	for(int i = 0; i < strlen(palavrasecreta); i++) {
+		if(jachutou(palavrasecreta[0], chutes, tentativas)) {
+		printf("%c ", palavrasecreta[i]);
+		} else {
+			printf("_ ");
+		}
+	}
+}
+
 int main() {
 
     abertura(); 
