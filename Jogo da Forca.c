@@ -1,18 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 #include "forca.h"
+#include <stdlib.h>
 
 char palavrasecreta[20];
 char chutes[26];
 int chutesdados = 0;
-
-void abertura() {
-	printf("   _   _   _     _   _   _   _   _ \n"         );
- 	printf("  / \\ / \\ / \\   / \\ / \\ / \\ / \\ / \\ \n");
- 	printf(" ( B | E | M ) ( V | I | N | D | O )\n"        );
- 	printf("  \\_/ \\_/ \\_/   \\_/ \\_/ \\_/ \\_/ \\_/\n" );
- 	printf("J O G O - D A - F O R C A\n\n"                 );
-}
 
 int enforcou() {
 	int erros = 0;
@@ -32,13 +25,34 @@ int enforcou() {
 	return erros >= 5;
 }
 
-void chuta(char chutes[], int* chutesdados) {
+void abertura() {
+	printf("   _   _   _     _   _   _   _   _          \n");
+ 	printf("  / \\ / \\ / \\   / \\ / \\ / \\ / \\ / \\ \n");
+ 	printf(" ( B | E | M ) ( V | I | N | D | O )        \n");
+ 	printf("  \\_/ \\_/ \\_/   \\_/ \\_/ \\_/ \\_/ \\_/ \n");
+ 	printf("      J O G O - D A - F O R C A           \n\n");
+}
+
+void palavraescolhe() {
+	FILE* f;
+
+	f = fopen("palavras.txt", "r");
+	if(f == 0);{
+	printf("Banco de dados de palavra nao disponivel\n\n");
+	exit(1);
+	}
+}
+
+int qtddepalavras;
+fscanf(f, "%d", &qtddepalavras);
+
+void chuta() {
 	char chute;
 	printf("\nQual e o seu chute ??\n\n");
 	scanf(" %c", &chute);
 
-	chutes[*chutesdados] = chute;
-	(*chutesdados)++;
+	chutes[chutesdados] = chute;
+	(chutesdados)++;
 }
 
 int jachutou(char letra) {
@@ -64,12 +78,12 @@ int ganhou() {
 }
 
 void desenhaforca() {
-	printf("Quantidade de chutes foram %d\n", chutesdados);
+	printf("Quantidade de chutes foram %d\n\n", chutesdados);
 
 	for(int i = 0; i < strlen(palavrasecreta); i++) {
 
 		if(jachutou(palavrasecreta[i])) {
-		printf("%c ", palavrasecreta[i]);
+			printf("%c ", palavrasecreta[i]);
 		} else {
 			printf("_ ");
 		}
@@ -77,22 +91,21 @@ void desenhaforca() {
 	printf("\n");
 }
 
-void escolherpalavra(char* palavrasecreta) {
-	printf(palavrasecreta, "MELANCIA");
+void escolherpalavra() {
+	sprintf(palavrasecreta, "MELANCIA");
 }
 
 int main() {
-
+	
 	abertura();
-	escolherpalavra(palavrasecreta);
+	escolherpalavra();
 
 
 	do {
 
-		desenhaforca(palavrasecreta, chutes, chutesdados);
-		chuta(chutes, &chutesdados);
+		desenhaforca();
+		chuta();
 
 		chutesdados++;
-
 	} while (!ganhou() && !enforcou());
 }
