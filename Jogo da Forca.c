@@ -4,26 +4,32 @@
 #include <stdlib.h>
 #include <time.h>
 
-char palavrasecreta[20];
+char palavrasecreta[TAMANHO_PALAVRA];
 char chutes[26];
 int chutesdados = 0;
 
-int enforcou() {
+int letraexistente(char letra) {
+
+	for(int j = 0; j < strlen(palavrasecreta); j++)	{
+		if(letra == palavrasecreta) {
+			return 1;
+		}
+	}
+	return 0;
+}
+
+int chuteserrados() {
 	int erros = 0;
 
 	for(int i = 0; i < chutesdados; i++) {
-		
-		int existe = 0;
-
-		for(int j = 0; j < strlen(palavrasecreta); j++) {
-			if(chutes[i] == palavrasecreta[j]) {
-				existe = 1;
-				break;
-			}
+		if(!letraexistente(chutes[i])) {
 		}
-		if (!existe) erros++;
 	}
-	return erros >= 5;
+	return erros;
+}
+
+int enforcou() {
+	return chuteserrados() >= 5;
 }
 
 int ganhou() {
@@ -66,6 +72,18 @@ int jachutou(char letra) {
 }
 
 void desenhaforca() {
+
+	printf("  _______         \n");
+	printf(" |/      |        \n");
+	printf(" |      (_)       \n");
+	printf(" |      \\|/      \n");
+	printf(" |       |        \n");
+	printf(" |      / \\      \n");
+	printf(" |                \n");
+	printf("_|___             \n");
+	printf("\n\n                ");
+
+
 	printf("Quantidade de chutes foram %d\n\n", chutesdados);
 
 	for(int i = 0; i < strlen(palavrasecreta); i++) {
@@ -107,7 +125,7 @@ void adicionarpalavra() {
 	scanf(" %c", &quer);
 	
 	if(quer == 'S') {
-		char novapalavra[20];
+		char novapalavra[TAMANHO_PALAVRA];
 		
 		printf("Digita a nova palavra em letras MAIUSCULAS: ");
 		scanf("%s", novapalavra);
