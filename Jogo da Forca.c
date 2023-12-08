@@ -8,7 +8,7 @@ char palavrasecreta[TAMANHO_PALAVRA];
 char chutes[26];
 int chutesdados = 0;
 
-int letraexistente(char letra) {
+int letraexiste(char letra) {
 
 	for(int j = 0; j < strlen(palavrasecreta); j++)	{
 		if(letra == palavrasecreta) {
@@ -23,7 +23,7 @@ int chuteserrados() {
 	int erros = 0;
 
 	for(int i = 0; i < chutesdados; i++) {
-		if(!letraexistente(chutes[i])) {
+		if(!letraexiste(chutes[i])) {
 		}
 	}
 	return erros;
@@ -55,14 +55,14 @@ void chuta() {
 	printf("\nQual e o seu chute ??\n\n");
 	scanf(" %c", &chute);
 
-	if(letraexistente(chute)){
+	if(letraexiste(chute)){
 		printf("Voce acertou:  a palavra tem a letra %c\n\n", chute);
 	} else {
 		printf("\nVoce errou: a palavra NAO tem a letra %c\n\n", chute);
 	}
 
 	chutes[chutesdados] = chute;
-	(chutesdados)++;
+	chutesdados++;
 }
 
 int jachutou(char letra) {
@@ -83,10 +83,10 @@ void desenhaforca() {
 
 	printf("  _______            \n");
 	printf(" |/      |           \n");
-	printf(" |       %c%c%c      \n", (erros>=1?'(':' '), (erros>=1?'_':' '), (erros>=1?')':' '));
-	printf(" |       %c%c%c      \n", (erros>=3?'\\':' '), (erros>=2?'|':' '), (erros>=3?'/': ' '));
-	printf(" |        %c         \n", (erros>=2?'|':' '));
-	printf(" |       %c %c       \n", (erros>=4?'/':' '), (erros>=4?'\\':' '));
+	printf(" |       %c%c%c      \n", (erros >= 1 ? '(' : ' '), (erros >= 1 ? '_' : ' '), (erros >= 1 ? ')' : ' '));
+	printf(" |       %c%c%c      \n", (erros >= 3 ? '\\' : ' '), (erros >= 2 ? '|' : ' '), (erros >= 3 ? '/' : ' '));
+	printf(" |        %c         \n", (erros >= 2 ? '|' : ' '));
+	printf(" |       %c %c       \n", (erros >= 4 ? '/' : ' '), (erros >= 4 ? '\\' : ' '));
 	printf(" |                   \n");
 	printf("_|___                \n");
 	printf("\n\n                 \n");
