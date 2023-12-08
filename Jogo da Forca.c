@@ -24,6 +24,7 @@ int chuteserrados() {
 
 	for(int i = 0; i < chutesdados; i++) {
 		if(!letraexiste(chutes[i])) {
+			erros++;
 		}
 	}
 	return erros;
@@ -83,16 +84,15 @@ void desenhaforca() {
 
 	printf("  _______            \n");
 	printf(" |/      |           \n");
-	printf(" |       %c%c%c      \n", (erros >= 1 ? '(' : ' '), (erros >= 1 ? '_' : ' '), (erros >= 1 ? ')' : ' '));
-	printf(" |       %c%c%c      \n", (erros >= 3 ? '\\' : ' '), (erros >= 2 ? '|' : ' '), (erros >= 3 ? '/' : ' '));
-	printf(" |        %c         \n", (erros >= 2 ? '|' : ' '));
-	printf(" |       %c %c       \n", (erros >= 4 ? '/' : ' '), (erros >= 4 ? '\\' : ' '));
+	printf(" |      %c%c%c       \n", (erros >= 1 ? '(' : ' '), (erros >= 1 ? '_' : ' '), (erros >= 1 ? ')' : ' '));
+	printf(" |      %c%c%c       \n", (erros >= 3 ? '\\' : ' '), (erros >= 2 ? '|' : ' '), (erros >= 3 ? '/' : ' '));
+	printf(" |       %c          \n", (erros >= 2 ? '|' : ' '));
+	printf(" |      %c %c        \n", (erros >= 4 ? '/' : ' '), (erros >= 4 ? '\\' : ' '));
 	printf(" |                   \n");
 	printf("_|___                \n");
 	printf("\n\n                 \n");
 
 	for(int i = 0; i < strlen(palavrasecreta); i++) {
-
 		if(jachutou(palavrasecreta[i])) {
 			printf("%c ", palavrasecreta[i]);
 		} else {
@@ -204,7 +204,7 @@ int main() {
 		printf("                ######################              ");
 		printf("              ##########################            ");
 	} else {
-		printf("\nPuxa nao foi dessa vez que voce conseguiu mas continue tenta ta ? valew");
+		printf("\nPuxa nao foi dessa vez que voce conseguiu mas continue tenta ta ? VALEW!!\n\n");
 		printf("A palavra era **%s**\n\n", palavrasecreta);
 
 		printf("* 🅳🅴🆁🆁🅾🆃🆂 *");
